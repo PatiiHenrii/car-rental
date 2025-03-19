@@ -1,0 +1,22 @@
+.title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 12px;
+}
+
+mat-card-actions{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -1,0 +1,19 @@
+.container {
+  padding-block: 2rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+
+  app-cars-card {
+    width: 300px;
+    margin: 1rem;
+  }
+
+}
+
+mat-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

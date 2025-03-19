@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content:space-between;
+
+  .title {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+
+}

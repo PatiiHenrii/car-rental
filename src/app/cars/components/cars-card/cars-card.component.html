@@ -1,0 +1,13 @@
+<mat-card appearance="outlined">
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <div class="title">
+      <p> {{ car.manufacturer }} {{ car.model }} </p> <mat-chip>{{ car.status }}</mat-chip>
+    </div>
+    <p class="subtitle"> {{ car.year }} - {{ car.license_plate }} </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <p class="title"> {{ car.rate_per_day }}/day </p>
+    <button mat-button>BOOK</button>
+  </mat-card-actions>
+</mat-card>
