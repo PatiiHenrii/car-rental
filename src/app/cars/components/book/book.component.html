@@ -1,0 +1,14 @@
+@if (store.selectedCar$ | async; as car) {
+<div class="container">
+  <div>
+    <app-cars-card [car]="car"></app-cars-card>
+  </div>
+
+  <div class="form">
+    <app-book-form></app-book-form>
+  </div>
+</div>
+
+
+}
+

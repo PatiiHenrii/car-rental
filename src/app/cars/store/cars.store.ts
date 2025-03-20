@@ -16,6 +16,7 @@ export class CarsStore extends ComponentStore<CarsState> {
 
   readonly carsList$ = this.select((state) => state.carsList);
   readonly laoding$ = this.select((state) => state.loading);
+  readonly selectedCar$ = this.select((state) => state.selectedCar);
 
 
   setCars = this.updater(
@@ -32,13 +33,20 @@ export class CarsStore extends ComponentStore<CarsState> {
     })
   )
 
+  setSelectedCar = this.updater(
+    (state, selectedCar: CarResponse): CarsState => ({
+      ...state,
+      selectedCar
+    })
+  )
+
 
   readonly load = this.effect<void>(
     (cars$) => cars$.pipe(
       exhaustMap(() => {
         this.setLoading(true);
         return this.carsService.list().pipe(
-          delay(5000),
+          delay(1000),
           tapResponse({
             next: (carsList) => this.setState({loading: false, carsList}),
             error: (error: HttpErrorResponse) => console.log(error)

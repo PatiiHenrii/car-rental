@@ -8,6 +8,6 @@
   </mat-card-content>
   <mat-card-actions>
     <p class="title"> {{ car.rate_per_day }}/day </p>
-    <button mat-button>BOOK</button>
+    <button mat-button (click)="bookCar(car)">BOOK</button>
   </mat-card-actions>
 </mat-card>

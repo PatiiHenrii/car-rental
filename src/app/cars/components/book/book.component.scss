@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 8rem 4rem;
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}

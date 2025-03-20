@@ -15,9 +15,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 export class CarsListComponent implements OnInit {
 
 
-  constructor(public readonly store: CarsStore) {
-
-  }
+  constructor(public readonly store: CarsStore) {}
 
   ngOnInit(): void {
     this.store.load()
