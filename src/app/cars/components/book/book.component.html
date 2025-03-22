@@ -1,14 +1,22 @@
-@if (store.selectedCar$ | async; as car) {
-<div class="container">
-  <div>
-    <app-cars-card [car]="car"></app-cars-card>
+@if (bookView$ | async; as bookView) {
+  @if (bookView.resevertionSuccess) {
+
+    <div class="content">
+      <h1>🎉 Parabéns, sua ação foi um sucesso! 🎉</h1>
+      <button mat-button>Basic</button>
   </div>
 
-  <div class="form">
-    <app-book-form></app-book-form>
-  </div>
-</div>
+  } @else {
+    <div class="container">
+      <app-book-form [selectedCar]="store.selectedCar$ | async"></app-book-form>
 
+      <div>
+        @if (store.selectedCar$ | async; as car) {
+          <app-cars-card [car]="car"></app-cars-card>
+        }
+      </div>
 
+    </div>
+
+  }
 }
-

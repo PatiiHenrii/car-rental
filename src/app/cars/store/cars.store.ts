@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { ComponentStore } from "@ngrx/component-store"
 import { carsInitialState, CarsState } from "../../shared/models/cars-state";
 import { CarsService } from "../services/cars.service";
-import { delay, exhaustMap, timeout } from "rxjs";
+import { delay, exhaustMap, timeout, withLatestFrom } from "rxjs";
 import { CarResponse } from '../../shared/models/car-response';
 import { HttpErrorResponse } from '@angular/common/http';
 @Injectable()
@@ -48,8 +48,9 @@ export class CarsStore extends ComponentStore<CarsState> {
         return this.carsService.list().pipe(
           delay(1000),
           tapResponse({
-            next: (carsList) => this.setState({loading: false, carsList}),
-            error: (error: HttpErrorResponse) => console.log(error)
+            next: (carsList) => this.setCars(carsList),
+            error: (error: HttpErrorResponse) => console.log(error),
+            finalize: () => this.setLoading(false)
           })
         )
       }

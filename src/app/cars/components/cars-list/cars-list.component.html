@@ -4,8 +4,6 @@
 
 <div class="container">
   @for (car of (store.carsList$ | async); track $index) {
-
     <app-cars-card [car]="car"></app-cars-card>
-
-    }
+  }
 </div>
