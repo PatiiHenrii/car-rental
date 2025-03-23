@@ -34,9 +34,9 @@ export class CarsStore extends ComponentStore<CarsState> {
   )
 
   setSelectedCar = this.updater(
-    (state, selectedCar: CarResponse): CarsState => ({
+    (state, selectedCarId: string): CarsState => ({
       ...state,
-      selectedCar
+      selectedCar: state.carsList.filter((el) => el.id === selectedCarId)[0]
     })
   )
 

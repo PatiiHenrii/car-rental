@@ -1,9 +1,9 @@
 import { BookService } from './../services/book.service';
-import { delay, exhaustMap, Observable, switchMap, tap } from 'rxjs';
+import { delay, exhaustMap, Observable, switchMap, tap, withLatestFrom } from 'rxjs';
 import { Injectable } from "@angular/core";
 import { ComponentStore } from "@ngrx/component-store";
 import { BookState } from "../../shared/models/book-state";
-import { BookRequest } from "../../shared/models/book-request";
+import { BookRequest, ReservationsResponse } from "../../shared/models/book-request";
 import { tapResponse } from '@ngrx/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -14,6 +14,7 @@ export class BookStore extends ComponentStore<BookState> {
     loading: this.select((state) => state.loading),
     reservationsList: this.select((state) => state.reservationsList),
     resevertionSuccess: this.select((state) => state.resevertionSuccess),
+    resevertionToEdit: this.select((state) => state.resevertionToEdit),
   })
 
   constructor(private readonly bookService: BookService){
@@ -27,12 +28,30 @@ export class BookStore extends ComponentStore<BookState> {
     })
   )
 
+  setSuccess = this.updater(
+    (state, resevertionSuccess: boolean): BookState => ({
+      ...state,
+      resevertionSuccess
+    })
+  )
+
   setResevations = this.updater(
-    (state, reservationsList: any): BookState => ({
+    (state, reservationsList: ReservationsResponse[]): BookState => ({
       ...state,
       reservationsList
     })
   )
+
+  setResevertionToEdit = this.updater(
+    (state, resevertionToEdit: ReservationsResponse): BookState => ({
+      ...state,
+      resevertionToEdit
+    })
+  )
+
+  getResevertionToEdit(): ReservationsResponse | undefined {
+    return this.get(state => state.resevertionToEdit)
+  }
 
   readonly load = this.effect<void>(
     (reservations$) => reservations$.pipe(
@@ -61,6 +80,38 @@ export class BookStore extends ComponentStore<BookState> {
             this.setState({resevertionSuccess: true, loading: false})
           },
           error:() => this.setState({resevertionSuccess: false, loading: false}),
+        })
+      )
+    ))
+  })
+
+  readonly updateBook = this.effect((bookRequest$: Observable<BookRequest>) => {
+    this.setLoading(true);
+    const bookId = this.getResevertionToEdit()?.id;
+    return bookRequest$.pipe(
+      switchMap((request) => this.bookService.update(request).pipe(
+        tapResponse({
+          next:(response) => {
+            console.log(response);
+            this.setState({resevertionSuccess: true, loading: false})
+          },
+          error:() => this.setState({resevertionSuccess: false, loading: false}),
+        })
+      )
+    ))
+  })
+
+  readonly deleteBook = this.effect((bookRequest$: Observable<string>) => {
+    this.setLoading(true);
+    return bookRequest$.pipe(
+      switchMap((request) => this.bookService.delete(request).pipe(
+        tapResponse({
+          next:(response) => {
+            console.log(response);
+            this.setLoading(false);
+            this.load()
+          },
+          error:() => this.setLoading(false),
         })
       )
     ))

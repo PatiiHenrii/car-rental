@@ -1,4 +1,5 @@
 export interface BookRequest {
+  "id": string,
   "car_id": string,
   "customer_name": string,
   "pickup_time": string,

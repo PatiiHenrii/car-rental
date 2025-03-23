@@ -1,3 +1,4 @@
+import { ReservationsResponse } from './../../../shared/models/book-request';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,34 +12,41 @@ import { MatInputModule } from '@angular/material/input';
 import { CarResponse } from '../../../shared/models/car-response';
 import { MatButtonModule } from '@angular/material/button';
 import { BookStore } from '../../store/book.store';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-book-form',
   providers: [provideNativeDateAdapter()],
-  imports: [MatFormFieldModule, MatDatepickerModule, FormsModule, ReactiveFormsModule, JsonPipe, AsyncPipe, MatSelectModule, MatInputModule, MatButtonModule],
+  imports: [MatFormFieldModule, MatDatepickerModule, FormsModule, ReactiveFormsModule, JsonPipe, AsyncPipe, MatSelectModule, MatInputModule, MatButtonModule, RouterLink],
   templateUrl: './book-form.component.html',
   styleUrl: './book-form.component.scss',
   standalone: true
 })
 export class BookFormComponent implements OnInit {
 
-  private bookStore = inject(BookStore)
+  private bookStore = inject(BookStore);
+  bookView$ = this.bookStore.bookView$;
+  public reservation: ReservationsResponse | undefined;
 
 
   @Input() selectedCar!: CarResponse | null | undefined;
 
-  bookView$ = this.bookStore.bookView$;
-
   public bookForm!: FormGroup;
 
-  constructor(private bookFormService: FormService,
+  constructor(
+    private bookFormService: FormService,
     public readonly carStore: CarsStore
   ) {}
 
   ngOnInit(): void {
     this.bookForm = this.bookFormService.bookForm;
     console.log('selectedCar',this.selectedCar)
-    this.bookForm.get("car")?.setValue(this.selectedCar);
+    this.bookForm.get("car_id")?.setValue(this.selectedCar?.id);
+
+    this.reservation = this.bookStore.getResevertionToEdit();
+    if(this.reservation) {
+      this.bookFormService.fillForm(this.reservation);
+    }
   }
 
   onCarChange($event: any) {
@@ -46,15 +54,25 @@ export class BookFormComponent implements OnInit {
     this.carStore.setSelectedCar($event.value)
   }
 
-  onBook() {
-
+  private validateForm(){
     if(this.bookForm.invalid) {
       this.bookForm.markAllAsTouched();
       return;
     }
+  }
+
+  onBook() {
+    this.validateForm();
     console.log(this.bookFormService.formRequest());
     this.bookStore.bookCar(this.bookFormService.formRequest());
-    this.bookForm.reset()
+    this.bookForm.reset();
+  }
+
+  onUpdate() {
+    this.validateForm();
+    console.log(this.bookFormService.formRequest());
+    this.bookStore.updateBook(this.bookFormService.formRequest());
+    this.bookForm.reset();
   }
 
 }

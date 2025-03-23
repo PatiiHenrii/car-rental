@@ -2,10 +2,10 @@
   <form [formGroup]="bookForm">
     <mat-form-field class="w-full">
     <mat-label>Car</mat-label>
-    <mat-select formControlName="car" (selectionChange)="onCarChange($event)">
+    <mat-select formControlName="car_id" (selectionChange)="onCarChange($event)">
       <mat-option value="" selected></mat-option>
       @for (car of carStore.carsList$ | async; track car) {
-        <mat-option [value]="car">{{car.manufacturer}} {{car.model}}</mat-option>
+        <mat-option [value]="car.id">{{car.manufacturer}} {{car.model}}</mat-option>
       }
     </mat-select>
   </mat-form-field>
@@ -35,7 +35,11 @@
   </form>
 
   <div class="footer-actions">
-    <button mat-flat-button>BACK</button>
-    <button mat-raised-button (click)="onBook()">CONFIRM</button>
+    <button mat-flat-button [routerLink]="['/cars']" >BACK</button>
+    @if(!reservation) {
+      <button mat-raised-button (click)="onBook()">CONFIRM</button>
+    } @else {
+      <button mat-raised-button (click)="onUpdate()">UPDATE</button>
+    }
   </div>
 </div>

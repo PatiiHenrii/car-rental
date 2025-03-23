@@ -22,6 +22,7 @@ export class BookComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.store.load();
+    this.bookStore.setSuccess(false);
+    this.store.load();
   }
 }

@@ -6,5 +6,6 @@ import { ReservationsComponent } from "./components/reservations/reservations.co
 export const CARS_ROUTES: Routes = [
   { path: '', component: CarsListComponent},
   { path: 'book', component: BookComponent},
-  { path: 'reservations', component: ReservationsComponent}
+  { path: 'reservations', component: ReservationsComponent},
+  { path: 'reservations/:id', component: BookComponent}
 ];

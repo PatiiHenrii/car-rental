@@ -18,7 +18,7 @@ export class CarsCardComponent {
   constructor(public readonly store: CarsStore, private router: Router) {}
 
   bookCar(car: CarResponse) {
-    this.store.setSelectedCar(car);
+    this.store.setSelectedCar(car.id);
     this.router.navigateByUrl('cars/book');
   }
 

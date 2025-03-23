@@ -22,10 +22,15 @@ export class BookService {
     return this.http.post<BookResponse>(`${this.API}/reservations`, book);
   }
 
+  update(book: BookRequest): Observable<BookResponse> {
+    console.log('BookService', book);
+    return this.http.put<BookResponse>(`${this.API}/reservations/${book.id}`, book);
+  }
 
-}
+  delete(bookId: string) {
+    console.log('BookService', bookId);
+    return this.http.delete<BookResponse>(`${this.API}/reservations/${bookId}`);
+  }
 
-const res: BookResponse = {
-  reservation_id: "1",
-  success: true
+
 }
