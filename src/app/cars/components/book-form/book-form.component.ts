@@ -7,7 +7,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ReservationsResponse } from '../../../shared/models/book-models';
 import { CarResponse } from '../../../shared/models/cars-models';
 import { FormService } from '../../services/form.service';
@@ -43,7 +43,8 @@ export class BookFormComponent implements OnInit {
 
   constructor(
     private bookFormService: FormService,
-    public readonly carStore: CarsStore
+    public readonly carStore: CarsStore,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -59,23 +60,26 @@ export class BookFormComponent implements OnInit {
   onCarChange($event: any) {
     this.carStore.setSelectedCar($event.value);
   }
-
-  private validateForm() {
+  onBook() {
     if (this.bookForm.invalid) {
       this.bookForm.markAllAsTouched();
       return;
     }
-  }
-
-  onBook() {
-    this.validateForm();
     this.bookStore.bookCar(this.bookFormService.formRequest());
     this.bookForm.reset();
   }
 
   onUpdate() {
-    this.validateForm();
+    if (this.bookForm.invalid) {
+      this.bookForm.markAllAsTouched();
+      return;
+    }
     this.bookStore.updateBook(this.bookFormService.formRequest());
+    this.bookForm.reset();
+  }
+
+  onBack() {
+    this.router.navigateByUrl('/cars');
     this.bookForm.reset();
   }
 }

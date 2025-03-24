@@ -1,6 +1,6 @@
 <div class="container">
-  <form [formGroup]="bookForm">
-    <mat-form-field class="w-full">
+  <form [formGroup]="bookForm" class="form">
+    <mat-form-field class="w-full pb-05">
     <mat-label>Car</mat-label>
     <mat-select formControlName="car_id" (selectionChange)="onCarChange($event)">
       <mat-option value="" selected></mat-option>
@@ -8,14 +8,20 @@
         <mat-option [value]="car.id">{{car.manufacturer}} {{car.model}}</mat-option>
       }
     </mat-select>
+    @if (bookForm.get('car_id')?.hasError('required')) {
+      <mat-error>Required field</mat-error>
+    }
   </mat-form-field>
 
-    <mat-form-field class="w-full">
+    <mat-form-field class="w-full pb-05">
       <mat-label>Name</mat-label>
       <input matInput formControlName="customer_name">
+      @if (bookForm.get('customer_name')?.hasError('required')) {
+        <mat-error>Required field</mat-error>
+      }
     </mat-form-field>
 
-    <mat-form-field class="w-full">
+    <mat-form-field class="w-full pb-05">
       <mat-label>Enter a date range</mat-label>
       <mat-date-range-input [rangePicker]="picker">
         <input matStartDate formControlName="pickup_time" placeholder="Start date">
@@ -25,17 +31,16 @@
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-date-range-picker #picker></mat-date-range-picker>
 
-      <!-- @if (range.controls.start.hasError('matStartDateInvalid')) {
-        <mat-error>Invalid start date</mat-error>
+      @if (
+      bookForm.get('pickup_time')?.hasError('required') ||
+      bookForm.get('dropoff_time')?.hasError('required')) {
+        <mat-error>Required field</mat-error>
       }
-      @if (range.controls.end.hasError('matEndDateInvalid')) {
-        <mat-error>Invalid end date</mat-error>
-      } -->
     </mat-form-field>
   </form>
 
   <div class="footer-actions">
-    <button mat-flat-button [routerLink]="['/cars']" >BACK</button>
+    <button mat-flat-button (click)="onBack()" >BACK</button>
     @if(!reservation) {
       <button mat-raised-button (click)="onBook()">CONFIRM</button>
     } @else {
