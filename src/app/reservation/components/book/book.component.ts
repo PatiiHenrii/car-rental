@@ -1,10 +1,10 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { BookStore } from '../../store/book.store';
-import { CarsStore } from '../../store/cars.store';
 import { BookFormComponent } from '../book-form/book-form.component';
-import { CarsCardComponent } from '../cars-card/cars-card.component';
+import { CarsCardComponent } from '../../../cars/components/cars-card/cars-card.component';
+import { BookStore } from '../../store/book.store';
+import { CarsStore } from '../../../cars/store/cars.store';
 
 @Component({
   selector: 'app-book',

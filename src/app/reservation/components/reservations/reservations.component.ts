@@ -4,8 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { ReservationsResponse } from '../../../shared/models/book-models';
 import { BookStore } from '../../store/book.store';
+import { ReservationsResponse } from '../../../shared/models/book-models';
 
 @Component({
   selector: 'app-reservations',
@@ -41,7 +41,7 @@ export class ReservationsComponent implements OnInit {
 
   edit(reservation: ReservationsResponse) {
     this.bookStore.setResevertionToEdit(reservation);
-    this.router.navigateByUrl(`cars/reservations/${reservation.id}`);
+    this.router.navigateByUrl(`book/reservations/${reservation.id}`);
   }
 
   delete(bookId: string) {

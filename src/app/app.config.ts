@@ -8,9 +8,9 @@ import {
 } from '@angular/common/http';
 import { provideComponentStore } from '@ngrx/component-store';
 import { APP_ROUTES } from './app.routes';
-import { BookStore } from './cars/store/book.store';
 import { CarsStore } from './cars/store/cars.store';
 import { InterceptorService } from './interceptor.service';
+import { BookStore } from './reservation/store/book.store';
 
 export const appConfig: ApplicationConfig = {
   providers: [

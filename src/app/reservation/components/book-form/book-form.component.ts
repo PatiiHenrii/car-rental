@@ -7,12 +7,12 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
+import { CarsStore } from '../../../cars/store/cars.store';
 import { ReservationsResponse } from '../../../shared/models/book-models';
 import { CarResponse } from '../../../shared/models/cars-models';
 import { FormService } from '../../services/form.service';
 import { BookStore } from '../../store/book.store';
-import { CarsStore } from '../../store/cars.store';
 
 @Component({
   selector: 'app-book-form',
@@ -26,7 +26,6 @@ import { CarsStore } from '../../store/cars.store';
     MatSelectModule,
     MatInputModule,
     MatButtonModule,
-    RouterLink,
   ],
   templateUrl: './book-form.component.html',
   styleUrl: './book-form.component.scss',
@@ -52,6 +51,7 @@ export class BookFormComponent implements OnInit {
     this.bookForm.get('car_id')?.setValue(this.selectedCar?.id);
 
     this.reservation = this.bookStore.getResevertionToEdit();
+    console.log(this.reservation);
     if (this.reservation) {
       this.bookFormService.fillForm(this.reservation);
     }

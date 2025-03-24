@@ -19,6 +19,6 @@ export class CarsCardComponent {
 
   bookCar(car: CarResponse) {
     this.store.setSelectedCar(car.id);
-    this.router.navigateByUrl('cars/book');
+    this.router.navigateByUrl('book');
   }
 }

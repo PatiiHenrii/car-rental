@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CarsStore } from '../../cars/store/cars.store';
 import {
   BookRequest,
   ReservationsResponse,
 } from '../../shared/models/book-models';
-import { CarsStore } from '../store/cars.store';
 
 @Injectable({
   providedIn: 'root',

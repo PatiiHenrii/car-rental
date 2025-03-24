@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { tapResponse } from '@ngrx/operators';
 import { exhaustMap, Observable, switchMap } from 'rxjs';
+import { BookService } from '../../reservation/services/book.service';
 import {
   BookRequest,
   BookState,
   ReservationsResponse,
 } from '../../shared/models/book-models';
-import { BookService } from './../services/book.service';
 
 @Injectable()
 export class BookStore extends ComponentStore<BookState> {
