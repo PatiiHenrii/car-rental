@@ -20,3 +20,10 @@ export interface ReservationsResponse {
   "total_price": number,
   "status": string
 }
+
+export interface BookState {
+  loading: boolean;
+  reservationsList?: ReservationsResponse[],
+  resevertionSuccess?: boolean,
+  resevertionToEdit?: ReservationsResponse,
+}

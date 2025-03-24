@@ -2,8 +2,7 @@ import { BookService } from './../services/book.service';
 import { delay, exhaustMap, Observable, switchMap, tap, withLatestFrom } from 'rxjs';
 import { Injectable } from "@angular/core";
 import { ComponentStore } from "@ngrx/component-store";
-import { BookState } from "../../shared/models/book-state";
-import { BookRequest, ReservationsResponse } from "../../shared/models/book-request";
+import { BookRequest, BookState, ReservationsResponse } from "../../shared/models/book-models";
 import { tapResponse } from '@ngrx/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -58,7 +57,6 @@ export class BookStore extends ComponentStore<BookState> {
       exhaustMap(() => {
         this.setLoading(true);
         return this.bookService.list().pipe(
-          delay(1000),
           tapResponse({
             next: (reservations) => this.setResevations(reservations),
             error: (error: HttpErrorResponse) => console.log(error),

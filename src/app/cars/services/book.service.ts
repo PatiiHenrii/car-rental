@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BookRequest, BookResponse, ReservationsResponse } from '../../shared/models/book-request';
+import { BookRequest, BookResponse, ReservationsResponse } from '../../shared/models/book-models';
 import { Observable, of } from 'rxjs';
 import { environment } from '../../../environments';
 

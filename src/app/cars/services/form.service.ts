@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CarsStore } from '../store/cars.store';
-import { BookRequest, ReservationsResponse } from '../../shared/models/book-request';
+import { BookRequest, ReservationsResponse } from '../../shared/models/book-models';
 
 @Injectable({
   providedIn: 'root'

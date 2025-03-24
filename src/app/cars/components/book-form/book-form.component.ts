@@ -1,4 +1,4 @@
-import { ReservationsResponse } from './../../../shared/models/book-request';
+import { ReservationsResponse } from '../../../shared/models/book-models';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';

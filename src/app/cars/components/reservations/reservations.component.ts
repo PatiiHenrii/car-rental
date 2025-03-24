@@ -4,7 +4,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { BookStore } from '../../store/book.store';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { ReservationsResponse } from '../../../shared/models/book-request';
+import { ReservationsResponse } from '../../../shared/models/book-models';
 import { Router } from '@angular/router';
 
 @Component({
