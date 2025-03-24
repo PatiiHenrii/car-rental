@@ -9,15 +9,16 @@ import { CarsStore } from '../../store/cars.store';
 import { FormService } from '../../services/form.service';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
-import { CarResponse } from '../../../shared/models/car-response';
 import { MatButtonModule } from '@angular/material/button';
 import { BookStore } from '../../store/book.store';
 import { RouterLink } from '@angular/router';
+import { CarResponse } from '../../../shared/models/cars-models';
 
 @Component({
   selector: 'app-book-form',
   providers: [provideNativeDateAdapter()],
-  imports: [MatFormFieldModule, MatDatepickerModule, FormsModule, ReactiveFormsModule, JsonPipe, AsyncPipe, MatSelectModule, MatInputModule, MatButtonModule, RouterLink],
+  imports: [
+    MatFormFieldModule, MatDatepickerModule, FormsModule, ReactiveFormsModule, AsyncPipe, MatSelectModule, MatInputModule, MatButtonModule, RouterLink],
   templateUrl: './book-form.component.html',
   styleUrl: './book-form.component.scss',
   standalone: true
@@ -40,7 +41,6 @@ export class BookFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookForm = this.bookFormService.bookForm;
-    console.log('selectedCar',this.selectedCar)
     this.bookForm.get("car_id")?.setValue(this.selectedCar?.id);
 
     this.reservation = this.bookStore.getResevertionToEdit();
@@ -50,7 +50,6 @@ export class BookFormComponent implements OnInit {
   }
 
   onCarChange($event: any) {
-    console.log('onCarChange', $event)
     this.carStore.setSelectedCar($event.value)
   }
 
@@ -63,14 +62,12 @@ export class BookFormComponent implements OnInit {
 
   onBook() {
     this.validateForm();
-    console.log(this.bookFormService.formRequest());
     this.bookStore.bookCar(this.bookFormService.formRequest());
     this.bookForm.reset();
   }
 
   onUpdate() {
     this.validateForm();
-    console.log(this.bookFormService.formRequest());
     this.bookStore.updateBook(this.bookFormService.formRequest());
     this.bookForm.reset();
   }

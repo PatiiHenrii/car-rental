@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { CarResponse } from '../../../shared/models/car-response';
 import { MatChipsModule } from '@angular/material/chips';
 import { Router, RouterLink } from '@angular/router';
 import { CarsStore } from '../../store/cars.store';
+import { CarResponse } from '../../../shared/models/cars-models';
 
 @Component({
   selector: 'app-cars-card',

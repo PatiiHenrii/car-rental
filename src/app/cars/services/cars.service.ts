@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { delay, Observable, of } from "rxjs";
-import { CarResponse } from "../../shared/models/car-response";
 import { environment } from "../../../environments";
+import { CarResponse } from "../../shared/models/cars-models";
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +19,3 @@ export class CarsService {
 
 }
 
-
-const carsList: CarResponse[] = []

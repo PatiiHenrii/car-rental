@@ -1,10 +1,9 @@
 import { tapResponse } from '@ngrx/operators';
 import { Injectable } from "@angular/core";
 import { ComponentStore } from "@ngrx/component-store"
-import { carsInitialState, CarsState } from "../../shared/models/cars-state";
+import { CarResponse, carsInitialState, CarsState } from "../../shared/models/cars-models";
 import { CarsService } from "../services/cars.service";
 import { delay, exhaustMap, timeout, withLatestFrom } from "rxjs";
-import { CarResponse } from '../../shared/models/car-response';
 import { HttpErrorResponse } from '@angular/common/http';
 @Injectable()
 export class CarsStore extends ComponentStore<CarsState> {
