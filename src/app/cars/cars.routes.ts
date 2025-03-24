@@ -1,11 +1,11 @@
-import { Routes } from "@angular/router";
-import { CarsListComponent } from "./components/cars-list/cars-list.component";
-import { BookComponent } from "./components/book/book.component";
-import { ReservationsComponent } from "./components/reservations/reservations.component";
+import { Routes } from '@angular/router';
+import { BookComponent } from './components/book/book.component';
+import { CarsListComponent } from './components/cars-list/cars-list.component';
+import { ReservationsComponent } from './components/reservations/reservations.component';
 
 export const CARS_ROUTES: Routes = [
-  { path: '', component: CarsListComponent},
-  { path: 'book', component: BookComponent},
-  { path: 'reservations', component: ReservationsComponent},
-  { path: 'reservations/:id', component: BookComponent}
+  { path: '', component: CarsListComponent },
+  { path: 'book', component: BookComponent },
+  { path: 'reservations', component: ReservationsComponent },
+  { path: 'reservations/:id', component: BookComponent },
 ];

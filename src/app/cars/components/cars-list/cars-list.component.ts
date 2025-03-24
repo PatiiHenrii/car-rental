@@ -1,10 +1,8 @@
-
-import { Component, inject, OnInit } from '@angular/core';
-import { CarsService } from '../../services/cars.service';
-import { CarsStore } from '../../store/cars.store';
-import { AsyncPipe, JsonPipe } from '@angular/common';
-import { CarsCardComponent } from '../cars-card/cars-card.component';
+import { AsyncPipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CarsStore } from '../../store/cars.store';
+import { CarsCardComponent } from '../cars-card/cars-card.component';
 @Component({
   selector: 'app-cars-list',
   imports: [AsyncPipe, CarsCardComponent, MatProgressSpinnerModule],
@@ -13,12 +11,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   standalone: true,
 })
 export class CarsListComponent implements OnInit {
-
-
   constructor(public readonly store: CarsStore) {}
 
   ngOnInit(): void {
-    this.store.load()
+    this.store.load();
   }
-
 }
