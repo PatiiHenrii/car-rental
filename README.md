@@ -1,59 +1,72 @@
-# CarRental
+# Car Rental
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.3.
+Angular application for managing car rentals. This project combines an Angular 19 frontend with Angular Material and a local Node.js backend.
 
-## Development server
+## 📦 Requirements
 
-To start a local development server, run:
+- **Node.js** version 18 or higher
+- **npm** version 9 or higher
+
+## 🚀 Installation
+
+Clone the repository and install the dependencies:
+
+```bash
+npm install
+```
+
+## ▶️ Running the Project
+
+To start both the Angular frontend and the Node.js backend simultaneously, run:
 
 ```bash
 npm start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+This command runs:
+- `node server.js` (backend server)
+- `ng serve` (Angular development server)
 
-## Code scaffolding
+Access the app at: [http://localhost:4200](http://localhost:4200)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🔧 Available Scripts
 
-```bash
-ng generate component component-name
-```
+| Command            | Description                                              |
+|--------------------|----------------------------------------------------------|
+| `npm start`        | Starts both backend and frontend                         |
+| `npm run server`   | Runs only the backend (`server.js`)                      |
+| `npm run client`   | Runs only the Angular frontend (`ng serve`)              |
+| `npm run build`    | Builds the app for production into the `dist/` folder    |
+| `npm run watch`    | Watches and rebuilds in development mode                 |
+| `npm test`         | Runs unit tests using Karma and Jasmine                  |
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🧪 Running Tests
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+To execute unit tests:
 
 ```bash
-ng test
+npm test
 ```
 
-## Running end-to-end tests
+## 🛠️ Technologies Used
 
-For end-to-end (e2e) testing, run:
+- [Angular 19](https://angular.io/)
+- [Angular Material](https://material.angular.io/)
+- [NgRx Component Store](https://ngrx.io/guide/component-store)
+- [RxJS](https://rxjs.dev/)
+- [Node.js](https://nodejs.org/)
+- [Concurrently](https://www.npmjs.com/package/concurrently)
 
-```bash
-ng e2e
+## 📁 Project Structure
+
+```
+car-rental/
+├── src/                  # Angular source code
+├── server.js             # Node.js backend server
+├── package.json          # Dependencies and scripts
+└── README.md             # Project documentation
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 📄 License
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This project is private. Usage and distribution require the author's permission.
