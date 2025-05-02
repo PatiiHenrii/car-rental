@@ -6,7 +6,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
+import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { Router } from '@angular/router';
 import { CarsStore } from '../../../cars/store/cars.store';
 import { ReservationsResponse } from '../../../shared/models/book-models';
@@ -43,7 +43,7 @@ export class BookFormComponent implements OnInit {
   constructor(
     private bookFormService: FormService,
     public readonly carStore: CarsStore,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -57,7 +57,7 @@ export class BookFormComponent implements OnInit {
     }
   }
 
-  onCarChange($event: any) {
+  onCarChange($event: MatSelectChange) {
     this.carStore.setSelectedCar($event.value);
   }
   onBook() {

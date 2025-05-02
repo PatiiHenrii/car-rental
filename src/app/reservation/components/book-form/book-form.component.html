@@ -1,21 +1,21 @@
 <div class="container">
   <form [formGroup]="bookForm" class="form">
     <mat-form-field class="w-full pb-05">
-    <mat-label>Car</mat-label>
-    <mat-select formControlName="car_id" (selectionChange)="onCarChange($event)">
-      <mat-option value="" selected></mat-option>
-      @for (car of carStore.carsList$ | async; track car) {
-        <mat-option [value]="car.id">{{car.manufacturer}} {{car.model}}</mat-option>
+      <mat-label>Car</mat-label>
+      <mat-select formControlName="car_id" (selectionChange)="onCarChange($event)">
+        <mat-option value="" selected></mat-option>
+        @for (car of carStore.carsList$ | async; track car) {
+          <mat-option [value]="car.id">{{ car.manufacturer }} {{ car.model }}</mat-option>
+        }
+      </mat-select>
+      @if (bookForm.get('car_id')?.hasError('required')) {
+        <mat-error>Required field</mat-error>
       }
-    </mat-select>
-    @if (bookForm.get('car_id')?.hasError('required')) {
-      <mat-error>Required field</mat-error>
-    }
-  </mat-form-field>
+    </mat-form-field>
 
     <mat-form-field class="w-full pb-05">
       <mat-label>Name</mat-label>
-      <input matInput formControlName="customer_name">
+      <input matInput formControlName="customer_name" />
       @if (bookForm.get('customer_name')?.hasError('required')) {
         <mat-error>Required field</mat-error>
       }
@@ -24,24 +24,25 @@
     <mat-form-field class="w-full pb-05">
       <mat-label>Enter a date range</mat-label>
       <mat-date-range-input [rangePicker]="picker">
-        <input matStartDate formControlName="pickup_time" placeholder="Start date">
-        <input matEndDate formControlName="dropoff_time" placeholder="End date">
+        <input matStartDate formControlName="pickup_time" placeholder="Start date" />
+        <input matEndDate formControlName="dropoff_time" placeholder="End date" />
       </mat-date-range-input>
       <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-date-range-picker #picker></mat-date-range-picker>
 
       @if (
-      bookForm.get('pickup_time')?.hasError('required') ||
-      bookForm.get('dropoff_time')?.hasError('required')) {
+        bookForm.get('pickup_time')?.hasError('required') ||
+        bookForm.get('dropoff_time')?.hasError('required')
+      ) {
         <mat-error>Required field</mat-error>
       }
     </mat-form-field>
   </form>
 
   <div class="footer-actions">
-    <button mat-flat-button (click)="onBack()" >BACK</button>
-    @if(!reservation) {
+    <button mat-flat-button (click)="onBack()">BACK</button>
+    @if (!reservation) {
       <button mat-raised-button (click)="onBook()">CONFIRM</button>
     } @else {
       <button mat-raised-button (click)="onUpdate()">UPDATE</button>

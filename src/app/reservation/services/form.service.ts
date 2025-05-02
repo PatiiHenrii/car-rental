@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CarsStore } from '../../cars/store/cars.store';
-import {
-  BookRequest,
-  ReservationsResponse,
-} from '../../shared/models/book-models';
+import { BookRequest, ReservationsResponse } from '../../shared/models/book-models';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +9,10 @@ import {
 export class FormService {
   private form!: FormGroup;
 
-  constructor(private _fb: FormBuilder, public readonly store: CarsStore) {}
+  constructor(
+    private _fb: FormBuilder,
+    public readonly store: CarsStore,
+  ) {}
 
   get bookForm(): FormGroup {
     return this.form ? this.form : this.formInit();

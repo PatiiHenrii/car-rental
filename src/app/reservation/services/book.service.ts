@@ -2,11 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments';
-import {
-  BookRequest,
-  BookResponse,
-  ReservationsResponse,
-} from '../../shared/models/book-models';
+import { BookRequest, BookResponse, ReservationsResponse } from '../../shared/models/book-models';
 
 @Injectable({
   providedIn: 'root',
@@ -27,10 +23,7 @@ export class BookService {
 
   update(book: BookRequest): Observable<BookResponse> {
     console.log('BookService', book);
-    return this.http.put<BookResponse>(
-      `${this.API}/reservations/${book.id}`,
-      book
-    );
+    return this.http.put<BookResponse>(`${this.API}/reservations/${book.id}`, book);
   }
 
   delete(bookId: string) {

@@ -3,11 +3,7 @@ import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { tapResponse } from '@ngrx/operators';
 import { delay, exhaustMap } from 'rxjs';
-import {
-  CarResponse,
-  carsInitialState,
-  CarsState,
-} from '../../shared/models/cars-models';
+import { CarResponse, carsInitialState, CarsState } from '../../shared/models/cars-models';
 import { CarsService } from '../services/cars.service';
 @Injectable()
 export class CarsStore extends ComponentStore<CarsState> {
@@ -23,21 +19,21 @@ export class CarsStore extends ComponentStore<CarsState> {
     (state, carsList: CarResponse[]): CarsState => ({
       ...state,
       carsList,
-    })
+    }),
   );
 
   setLoading = this.updater(
     (state, loading: boolean): CarsState => ({
       ...state,
       loading,
-    })
+    }),
   );
 
   setSelectedCar = this.updater(
     (state, selectedCarId: string): CarsState => ({
       ...state,
       selectedCar: state.carsList.filter((el) => el.id === selectedCarId)[0],
-    })
+    }),
   );
 
   readonly load = this.effect<void>((cars$) =>
@@ -50,9 +46,9 @@ export class CarsStore extends ComponentStore<CarsState> {
             next: (carsList) => this.setCars(carsList),
             error: (error: HttpErrorResponse) => console.log(error),
             finalize: () => this.setLoading(false),
-          })
+          }),
         );
-      })
-    )
+      }),
+    ),
   );
 }

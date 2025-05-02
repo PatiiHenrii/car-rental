@@ -4,11 +4,7 @@ import { ComponentStore } from '@ngrx/component-store';
 import { tapResponse } from '@ngrx/operators';
 import { exhaustMap, Observable, switchMap } from 'rxjs';
 import { BookService } from '../../reservation/services/book.service';
-import {
-  BookRequest,
-  BookState,
-  ReservationsResponse,
-} from '../../shared/models/book-models';
+import { BookRequest, BookState, ReservationsResponse } from '../../shared/models/book-models';
 
 @Injectable()
 export class BookStore extends ComponentStore<BookState> {
@@ -27,28 +23,28 @@ export class BookStore extends ComponentStore<BookState> {
     (state, loading: boolean): BookState => ({
       ...state,
       loading,
-    })
+    }),
   );
 
   setSuccess = this.updater(
     (state, resevertionSuccess: boolean): BookState => ({
       ...state,
       resevertionSuccess,
-    })
+    }),
   );
 
   setResevations = this.updater(
     (state, reservationsList: ReservationsResponse[]): BookState => ({
       ...state,
       reservationsList,
-    })
+    }),
   );
 
   setResevertionToEdit = this.updater(
     (state, resevertionToEdit: ReservationsResponse): BookState => ({
       ...state,
       resevertionToEdit,
-    })
+    }),
   );
 
   getResevertionToEdit(): ReservationsResponse | undefined {
@@ -64,10 +60,10 @@ export class BookStore extends ComponentStore<BookState> {
             next: (reservations) => this.setResevations(reservations),
             error: (error: HttpErrorResponse) => console.log(error),
             finalize: () => this.setLoading(false),
-          })
+          }),
         );
-      })
-    )
+      }),
+    ),
   );
 
   readonly bookCar = this.effect((bookRequest$: Observable<BookRequest>) => {
@@ -80,17 +76,15 @@ export class BookStore extends ComponentStore<BookState> {
               console.log(response);
               this.setState({ resevertionSuccess: true, loading: false });
             },
-            error: () =>
-              this.setState({ resevertionSuccess: false, loading: false }),
-          })
-        )
-      )
+            error: () => this.setState({ resevertionSuccess: false, loading: false }),
+          }),
+        ),
+      ),
     );
   });
 
   readonly updateBook = this.effect((bookRequest$: Observable<BookRequest>) => {
     this.setLoading(true);
-    const bookId = this.getResevertionToEdit()?.id;
     return bookRequest$.pipe(
       switchMap((request) =>
         this.bookService.update(request).pipe(
@@ -99,11 +93,10 @@ export class BookStore extends ComponentStore<BookState> {
               console.log(response);
               this.setState({ resevertionSuccess: true, loading: false });
             },
-            error: () =>
-              this.setState({ resevertionSuccess: false, loading: false }),
-          })
-        )
-      )
+            error: () => this.setState({ resevertionSuccess: false, loading: false }),
+          }),
+        ),
+      ),
     );
   });
 
@@ -119,9 +112,9 @@ export class BookStore extends ComponentStore<BookState> {
               this.load();
             },
             error: () => this.setLoading(false),
-          })
-        )
-      )
+          }),
+        ),
+      ),
     );
   });
 }

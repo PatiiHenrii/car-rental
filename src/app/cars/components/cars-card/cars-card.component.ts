@@ -15,7 +15,10 @@ import { CarsStore } from '../../store/cars.store';
 export class CarsCardComponent {
   @Input() car!: CarResponse;
 
-  constructor(public readonly store: CarsStore, private router: Router) {}
+  constructor(
+    public readonly store: CarsStore,
+    private router: Router,
+  ) {}
 
   bookCar(car: CarResponse) {
     this.store.setSelectedCar(car.id);

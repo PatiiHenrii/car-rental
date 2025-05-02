@@ -9,13 +9,7 @@ import { ReservationsResponse } from '../../../shared/models/book-models';
 
 @Component({
   selector: 'app-reservations',
-  imports: [
-    MatTableModule,
-    AsyncPipe,
-    MatIconModule,
-    MatButtonModule,
-    DatePipe,
-  ],
+  imports: [MatTableModule, AsyncPipe, MatIconModule, MatButtonModule, DatePipe],
   templateUrl: './reservations.component.html',
   styleUrl: './reservations.component.scss',
   standalone: true,

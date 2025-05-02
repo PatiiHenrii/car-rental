@@ -1,9 +1,6 @@
-@if ((store.laoding$ | async)) {
+@if (store.laoding$ | async) {
   <mat-spinner></mat-spinner>
 }
-
-<div class="container">
-  @for (car of (store.carsList$ | async); track $index) {
-    <app-cars-card [car]="car"></app-cars-card>
-  }
-</div>
+@for (car of store.carsList$ | async; track $index) {
+  <app-cars-card [car]="car"></app-cars-card>
+}

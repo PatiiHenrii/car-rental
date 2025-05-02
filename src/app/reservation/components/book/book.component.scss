@@ -1,9 +1,9 @@
 .container {
   display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: stretch;
-    height: calc(100% - 64px);
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+  height: calc(100% - 64px);
 
   div {
     width: 45%;
@@ -16,13 +16,13 @@
   }
 }
 
-.content{
+.content {
   text-align: center;
 }
 /* Título */
 h1 {
   font-size: 1.8rem;
-  color: #2D9CDB;
+  color: #2d9cdb;
   margin-bottom: 10px;
 }
 
@@ -35,11 +35,11 @@ p {
 
 @keyframes fadeIn {
   from {
-      opacity: 0;
-      transform: translateY(-20px);
+    opacity: 0;
+    transform: translateY(-20px);
   }
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }

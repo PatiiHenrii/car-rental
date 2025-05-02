@@ -1,10 +1,8 @@
 @if (bookView$ | async; as bookView) {
   @if (bookView.resevertionSuccess) {
-
     <div class="content">
       <h1>🎉 Congratulations, your reservation was successful!! 🎉</h1>
-  </div>
-
+    </div>
   } @else {
     <div class="container">
       <app-book-form [selectedCar]="store.selectedCar$ | async"></app-book-form>
@@ -14,8 +12,6 @@
           <app-cars-card [car]="car"></app-cars-card>
         }
       </div>
-
     </div>
-
   }
 }

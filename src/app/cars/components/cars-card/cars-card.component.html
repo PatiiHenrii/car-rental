@@ -1,13 +1,21 @@
 <mat-card appearance="outlined">
-  <img mat-card-image src="assets/001.jpg" alt="Photo of a Shiba Inu">
+  <img mat-card-image src="assets/001.jpg" alt="Photo of a Shiba Inu" />
   <mat-card-content>
     <div class="title">
-      <p> {{ car.manufacturer }} {{ car.model }} </p> <mat-chip [color]="car.status === 'active' ? 'primary': ''">{{ car.status }}</mat-chip>
+      <p>{{ car.manufacturer }} {{ car.model }}</p>
+      <mat-chip [color]="car.status === 'active' ? 'primary' : ''">{{ car.status }}</mat-chip>
     </div>
-    <p class="subtitle"> {{ car.year }} - {{ car.license_plate }} </p>
+    <p class="subtitle">{{ car.year }} - {{ car.license_plate }}</p>
   </mat-card-content>
   <mat-card-actions>
-    <p class="title"> {{ car.rate_per_day }}/day </p>
-    <button mat-raised-button color="primary" (click)="bookCar(car)" [disabled]="car.status === 'inactive'">BOOK</button>
+    <p class="title">{{ car.rate_per_day }}/day</p>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="bookCar(car)"
+      [disabled]="car.status === 'inactive'"
+    >
+      BOOK
+    </button>
   </mat-card-actions>
 </mat-card>
