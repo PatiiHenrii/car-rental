@@ -5,10 +5,11 @@ import { MatChipsModule } from '@angular/material/chips';
 import { Router } from '@angular/router';
 import { CarResponse } from '../../../shared/models/cars-models';
 import { CarsStore } from '../../store/cars.store';
+import { UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-cars-card',
-  imports: [MatCardModule, MatButtonModule, MatChipsModule],
+  imports: [MatCardModule, MatButtonModule, MatChipsModule, UpperCasePipe],
   templateUrl: './cars-card.component.html',
   styleUrl: './cars-card.component.scss',
 })

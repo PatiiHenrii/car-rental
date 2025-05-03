@@ -1,9 +1,9 @@
 <mat-card appearance="outlined">
-  <img mat-card-image src="assets/001.jpg" alt="Photo of a Shiba Inu" />
+  <img mat-card-image src="assets/001.jpg" [alt]="car.model" />
   <mat-card-content>
     <div class="title">
       <p>{{ car.manufacturer }} {{ car.model }}</p>
-      <mat-chip [color]="car.status === 'active' ? 'primary' : ''">{{ car.status }}</mat-chip>
+      <mat-chip [color]="car.status === 'active' ? 'primary' : ''">{{ car.status | uppercase }}</mat-chip>
     </div>
     <p class="subtitle">{{ car.year }} - {{ car.license_plate }}</p>
   </mat-card-content>

@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: stretch;
-  height: calc(100% - 64px);
+  gap: 1rem;
 
   div {
     width: 45%;
