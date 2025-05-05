@@ -23,7 +23,7 @@ export interface ReservationsResponse {
 
 export interface BookState {
   loading: boolean;
-  reservationsList?: ReservationsResponse[];
-  resevertionSuccess?: boolean;
-  resevertionToEdit?: ReservationsResponse;
+  reservationsList: ReservationsResponse[];
+  resevertionSuccess: boolean;
+  resevertionToEdit: ReservationsResponse | undefined;
 }

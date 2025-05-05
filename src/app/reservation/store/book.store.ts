@@ -16,7 +16,12 @@ export class BookStore extends ComponentStore<BookState> {
   });
 
   constructor(private readonly bookService: BookService) {
-    super({ loading: false });
+    super({
+      loading: false,
+      reservationsList: [],
+      resevertionSuccess: true,
+      resevertionToEdit: undefined
+     });
   }
 
   setLoading = this.updater(
@@ -74,9 +79,13 @@ export class BookStore extends ComponentStore<BookState> {
           tapResponse({
             next: (response) => {
               console.log(response);
-              this.setState({ resevertionSuccess: true, loading: false });
+              this.setSuccess(true)
+              this.setLoading(false)
             },
-            error: () => this.setState({ resevertionSuccess: false, loading: false }),
+            error: () => {
+              this.setSuccess(false)
+              this.setLoading(false)
+            },
           }),
         ),
       ),
@@ -91,9 +100,13 @@ export class BookStore extends ComponentStore<BookState> {
           tapResponse({
             next: (response) => {
               console.log(response);
-              this.setState({ resevertionSuccess: true, loading: false });
+              this.setSuccess(true)
+              this.setLoading(false)
             },
-            error: () => this.setState({ resevertionSuccess: false, loading: false }),
+            error: () => {
+              this.setSuccess(false)
+              this.setLoading(false)
+            },
           }),
         ),
       ),
