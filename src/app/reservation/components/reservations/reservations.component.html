@@ -1,6 +1,6 @@
 @if (bookView$ | async; as bookView) {
   <div class="container">
-    <table mat-table [dataSource]="bookView.reservationsList ?? []" class="mat-elevation-z8">
+    <table mat-table [dataSource]="bookView.reservationsList" class="mat-elevation-z8">
       <mat-text-column name="car_id" headerText="Car"></mat-text-column>
       <mat-text-column name="customer_name" headerText="Customer"></mat-text-column>
 
