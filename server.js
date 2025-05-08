@@ -116,13 +116,20 @@ app.get("/reservations", (req, res) => {
 app.post("/reservations", (req, res) => {
   //TODO: fix cauculation
     const { car_id, customer_name, pickup_time, dropoff_time } = req.body;
+    const car = cars.filter(el => el.id === car_id);
+    const diffInMs = new Date(pickup_time) - new Date(dropoff_time);
+    console.log('diffInMs', diffInMs)
+    const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+    console.log('diffInDays', diffInDays)
+    const total = diffInDays * (car.rate_per_day)
+    console.log('total', total)
     const newReservation = {
         id: `${reservations.length + 1}`,
         car_id,
         customer_name,
         pickup_time,
         dropoff_time,
-        total_price: 100.0,
+        total_price: total,
         status: "confirmed"
     };
     reservations.push(newReservation);
