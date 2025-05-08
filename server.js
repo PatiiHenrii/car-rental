@@ -114,6 +114,7 @@ app.get("/reservations", (req, res) => {
 });
 
 app.post("/reservations", (req, res) => {
+  //TODO: fix cauculation
     const { car_id, customer_name, pickup_time, dropoff_time } = req.body;
     const newReservation = {
         id: `${reservations.length + 1}`,
