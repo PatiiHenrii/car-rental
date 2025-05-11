@@ -27,6 +27,7 @@
     "@angular/router": "^19.2.0",
     "@ngrx/component-store": "^19.0.1",
     "@ngrx/operators": "^19.0.1",
+    "luxon": "^3.6.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
@@ -37,6 +38,7 @@
     "@angular/compiler-cli": "^19.2.0",
     "@eslint/compat": "^1.2.9",
     "@types/jasmine": "~5.1.0",
+    "@types/luxon": "^3.6.2",
     "angular-eslint": "19.3.0",
     "concurrently": "^9.1.2",
     "eslint": "^9.23.0",

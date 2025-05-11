@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CarsStore } from '../../cars/store/cars.store';
 import { BookRequest, ReservationsResponse } from '../../shared/models/book-models';
+import { DateTime } from 'luxon';
 
 @Injectable({
   providedIn: 'root',
@@ -30,12 +31,14 @@ export class FormService {
   }
 
   formRequest(): BookRequest {
+    const dropoff_time = DateTime.fromJSDate(this.form.get('dropoff_time')?.value).toISODate() || '';
+    const pickup_time = DateTime.fromJSDate(this.form.get('pickup_time')?.value).toISODate() || '';
     return {
       id: this.form.get('id')?.value,
       car_id: this.form.get('car_id')?.value,
       customer_name: this.form.get('customer_name')?.value,
-      dropoff_time: this.form.get('dropoff_time')?.value,
-      pickup_time: this.form.get('pickup_time')?.value,
+      dropoff_time,
+      pickup_time,
     };
   }
 
