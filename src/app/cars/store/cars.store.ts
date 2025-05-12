@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { tapResponse } from '@ngrx/operators';
 import { delay, exhaustMap } from 'rxjs';
-import { CarResponse, carsInitialState, CarsState } from '../../shared/models/cars-models';
+import { CarResponse, carsInitialState, CarsState, CarStatusEnum } from '../../shared/models/cars-models';
 import { CarsService } from '../services/cars.service';
 @Injectable()
 export class CarsStore extends ComponentStore<CarsState> {
@@ -11,7 +11,7 @@ export class CarsStore extends ComponentStore<CarsState> {
     super(carsInitialState);
   }
 
-  readonly carsList$ = this.select((state) => state.carsList);
+  readonly carsList$ = this.select((state) => state.carsList.filter(el => el.status === CarStatusEnum.ACTIVE));
   readonly laoding$ = this.select((state) => state.loading);
   readonly selectedCar$ = this.select((state) => state.selectedCar);
 

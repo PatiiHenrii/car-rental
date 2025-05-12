@@ -3,7 +3,7 @@
   <mat-card-content>
     <div class="title">
       <p>{{ car.manufacturer }} {{ car.model }}</p>
-      <mat-chip [color]="car.status === 'active' ? 'primary' : ''">{{ car.status | uppercase }}</mat-chip>
+      <mat-chip [color]="car.status === CarStatusEnum.ACTIVE ? 'primary' : ''">{{ car.status | uppercase }}</mat-chip>
     </div>
     <p class="subtitle">{{ car.year }} - {{ car.license_plate }}</p>
   </mat-card-content>
@@ -13,7 +13,7 @@
       mat-raised-button
       color="primary"
       (click)="bookCar(car)"
-      [disabled]="car.status === 'inactive'"
+      [disabled]="car.status === CarStatusEnum.ACTIVE"
     >
       BOOK
     </button>

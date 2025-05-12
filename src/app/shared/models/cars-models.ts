@@ -17,5 +17,10 @@ export interface CarResponse {
   license_plate: string;
   year: number;
   rate_per_day: number;
-  status: string;
+  status: CarStatusEnum;
+}
+
+export enum CarStatusEnum {
+  ACTIVE = 'ACTIVE',
+  INACTIVE = 'INACTIVE'
 }

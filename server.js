@@ -16,7 +16,7 @@ let cars = [
     "license_plate": "ABC-1234",
     "year": 2022,
     "rate_per_day": 45,
-    "status": "active"
+    "status": "ACTIVE"
   },
   {
     "id": "2",
@@ -25,7 +25,7 @@ let cars = [
     "license_plate": "XYZ-5678",
     "year": 2023,
     "rate_per_day": 50,
-    "status": "inactive"
+    "status": "INACTIVE"
   },
   {
     "id": "3",
@@ -34,7 +34,7 @@ let cars = [
     "license_plate": "LMN-9012",
     "year": 2021,
     "rate_per_day": 120,
-    "status": "active"
+    "status": "ACTIVE"
   },
   {
     "id": "4",
@@ -43,7 +43,7 @@ let cars = [
     "license_plate": "QWE-3456",
     "year": 2024,
     "rate_per_day": 35,
-    "status": "inactive"
+    "status": "INACTIVE"
   },
   {
     "id": "5",
@@ -52,7 +52,7 @@ let cars = [
     "license_plate": "RTY-7890",
     "year": 2022,
     "rate_per_day": 75,
-    "status": "active"
+    "status": "ACTIVE"
   },
   {
     "id": "6",
@@ -61,7 +61,7 @@ let cars = [
     "license_plate": "UIO-1111",
     "year": 2023,
     "rate_per_day": 90,
-    "status": "inactive"
+    "status": "INACTIVE"
   },
   {
     "id": "7",
@@ -70,7 +70,7 @@ let cars = [
     "license_plate": "PAS-2222",
     "year": 2022,
     "rate_per_day": 150,
-    "status": "active"
+    "status": "ACTIVE"
   },
   {
     "id": "8",
@@ -79,7 +79,7 @@ let cars = [
     "license_plate": "DFG-3333",
     "year": 2023,
     "rate_per_day": 130,
-    "status": "inactive"
+    "status": "INACTIVE"
   },
   {
     "id": "9",
@@ -88,7 +88,7 @@ let cars = [
     "license_plate": "JKL-4444",
     "year": 2024,
     "rate_per_day": 60,
-    "status": "active"
+    "status": "ACTIVE"
   },
   {
     "id": "10",
@@ -97,7 +97,7 @@ let cars = [
     "license_plate": "MNO-5555",
     "year": 2023,
     "rate_per_day": 55,
-    "status": "inactive"
+    "status": "INACTIVE"
   }
 ];
 
