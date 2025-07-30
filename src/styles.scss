@@ -78,7 +78,6 @@ $custom-theme: mat.m2-define-light-theme((
     primary: $primary-palette,
     accent: $accent-palette,
     warn: $warn-palette,
-    dark-blue: $warn-palette,
   ),
   typography: mat.m2-define-typography-config(), // ou defina um custom
   density: 0, // opcional
